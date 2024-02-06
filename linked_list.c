@@ -17,7 +17,7 @@ long	ft_atol(char *str)
 		res = (res * 10) + (*str - '0');
 		str++;
 	}
-	return (res);
+	return (res * neg);
 }
 
 size_t	stack_len(t_push_swap *stack)
@@ -33,7 +33,7 @@ size_t	stack_len(t_push_swap *stack)
 	return (i);
 }
 
-t_push_swap	find_last_node(t_push_swap *stack)
+t_push_swap	*find_last_node(t_push_swap *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -42,7 +42,7 @@ t_push_swap	find_last_node(t_push_swap *stack)
 	return (stack);
 }
 
-void	stack_add_back(t_push_swap *stack, int nbr, bool flag)
+void	stack_add_back(t_push_swap **stack, int nbr, bool flag)
 {
 	t_push_swap *new_node;
 	t_push_swap *last_node;
@@ -50,13 +50,20 @@ void	stack_add_back(t_push_swap *stack, int nbr, bool flag)
 	new_node = (t_push_swap *)malloc(sizeof(t_push_swap));
 	if (!new_node)
 		error(stack,) // ?? pensar como gestionar esto
-	last_node = find_last_node(stack);
-	last_node->next = new_node;
-	new_node->prev = last_node;
 	new_node->value = nbr;
+	new_node->prev = NULL;
+	new_node->next = NULL;
+	if (stack && *stack)
+	{
+		last_node = find_last_node(*stack);	
+		last_node->next = new_node;
+		new_node->prev = last_node;
+	}
+	else
+		*stack = new_node;
 }
 
-void	stack_init(t_push_swap *stack, char **argv, bool flag)
+void	stack_init(t_push_swap **stack, char **argv, bool flag)
 {
 	long	nbr;
 	

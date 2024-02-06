@@ -15,19 +15,19 @@ void	rotate(t_push_swap **stack)
 	}
 }
 
-void	ra(t_push_swap *a)
+void	ra(t_push_swap **a)
 {
 	rotate(a);
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_push_swap *b)
+void	rb(t_push_swap **b)
 {
 	rotate(b);
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_push_swap *a, t_push_swap *b)
+void	rr(t_push_swap **a, t_push_swap **b)
 {
 	rotate(a);
 	rotate(b);
