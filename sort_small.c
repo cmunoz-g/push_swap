@@ -16,8 +16,13 @@ int	find_biggest(t_push_swap *stack)
 
 void	sort_small(t_push_swap **stack)
 {
-	if ((*stack)->value == find_biggest(*stack))
+	int	biggest;
+
+	biggest = find_biggest(*stack);
+	if ((*stack)->value == biggest)
 		ra(stack);
-	if ((*stack)->value > stack->next->value)
+	else if ((*stack)->next->value == biggest)
+		rra(stack);
+	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
 }

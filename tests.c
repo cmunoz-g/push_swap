@@ -43,6 +43,30 @@ void	ra(t_push_swap **a)
 	write(1, "ra\n", 3);
 }
 
+void	reverse_rotate(t_push_swap **stack)
+{
+	t_push_swap *last_node;
+	t_push_swap *new_last;
+
+	if (stack && *stack)
+	{
+		last_node = find_last_node(*stack);
+		new_last = last_node->prev;
+		if (new_last)
+			new_last->next = NULL;
+		last_node->next = *stack;
+		last_node->prev = NULL;
+		(*stack)->prev = last_node;
+		*stack = last_node;
+	}
+}
+
+void	rra(t_push_swap **a)
+{
+	reverse_rotate(a);
+	write(1, "rra\n", 4);
+}
+
 void	swap(t_push_swap **stack)
 {
 	t_push_swap	*first;
@@ -128,13 +152,19 @@ int	find_biggest(t_push_swap *stack)
 			res = stack->value;
 		stack = stack->next;
 	}
+	printf("the biggest is:%d\n",res);
 	return (res);
 }
 
 void	sort_small(t_push_swap **stack)
 {
-	if ((*stack)->value == find_biggest(*stack))
+	int	biggest;
+
+	biggest = find_biggest(*stack);
+	if ((*stack)->value == biggest)
 		ra(stack);
+	else if ((*stack)->next->value == biggest)
+		rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
 }
