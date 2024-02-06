@@ -3,8 +3,15 @@
 long	ft_atol(char *str)
 {
 	long	res;
+	int		neg;
 
 	res = 0;
+	neg = 1;
+	if (*str == '-')
+	{
+		neg = -1;
+		str++;
+	}
 	while (*str)
 	{
 		res = (res * 10) + (*str - '0');
