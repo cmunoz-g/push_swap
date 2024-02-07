@@ -3,10 +3,15 @@
 // 3 - implementar algoritmos
 // 4 - bonus
 
-#include <push_swap.h>
+#include "push_swap.h"
 
-// ideas: puedo utilizar sa, ss, sb de alguna forma? quiza anadiendo mas condiciones, comprobar una vez funcione la ft
+// ideas: puedo utilizar sa, ss, sb de alguna forma? quiza anadiendo mas condiciones, comprobar una vez funcione la ft. por ejemplo si el target esta en la 2 pos?
 // revisar comentarios del video e investigar para ver si se pude optimizar mas aun;
+
+
+// ./push_swap 3 2 1 4 5 -4 -2 10 6 9 esto bien
+// ./push_swap 3 2 1 4 5 -4 -2 10 6 esto no :( (CASO 1)
+// ./push_swap 3 2 1 4 5 -4 -2 10 6 9 8 esto no crashea pero no lo ordena
 
 int	main(int argc, char *argv[])
 {
@@ -28,7 +33,7 @@ int	main(int argc, char *argv[])
 	check_args(a, argv, flag);
 	stack_init(&a, argv, flag);
 	len_a = stack_len(a);
-	if (!is_sorted(a))
+	if (is_sorted(a, argv, flag))
 	{
 		if (len_a == 2)
 			sa(&a);
@@ -36,6 +41,12 @@ int	main(int argc, char *argv[])
 			sort_small(&a);
 		else
 			push_swap(&a, &b);
+	}
+	printf("\n");
+	while (a)
+	{
+		printf("%d\n",a->value);
+		a = a->next;
 	}
 	free_stack(&a);
 	return (0);

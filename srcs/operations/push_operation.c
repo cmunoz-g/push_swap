@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void	push(t_push_swap **source_stack, t_push_swap **dest_stack)
 {
 	t_push_swap	*node_to_move;

@@ -19,9 +19,9 @@ SRCS = main.c \
 
 OBJS = $(SRCS:%.c=$(OBJFOLDER)%.o)
 
-$(OBJFOLDER)%.o: $(FOLDER)%.c 
-	@mkdir -p $(OBJFOLDER)
-	$(CC) $(CFLAGS) -I$(INCLUDE)  -c $< -o $@
+$(OBJFOLDER)%.o: $(FOLDER)%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) -o $(NAME) $(OBJS)

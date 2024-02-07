@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	get_cheapest(t_push_swap *stack)
+t_push_swap	*get_cheapest(t_push_swap *stack)
 {
 	while (stack->cheapest == false)
 		stack = stack->next;
@@ -11,8 +11,8 @@ void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
 {
 	if (which_stack == 'a')
 	{
-		if (target->median == true)
-			while (*stack != target)
+		if (target->above_median == true) 
+			while (*stack != target) // se queda stuckeado en este while con el caso 1
 				ra(stack);
 		else 
 			while (*stack != target)
@@ -20,7 +20,7 @@ void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
 	}
 	else
 	{
-		if (target->median == true)
+		if (target->above_median == true)
 			while (*stack != target)
 				rb(stack);
 		else 
@@ -33,14 +33,16 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 {
 	t_push_swap *cheap;
 
-	cheap = get_cheapest(b);
-	if (cheap->median == true && cheap->target_node->median == true)
+	cheap = get_cheapest(*b);
+	if (cheap->above_median == true && cheap->target->above_median == true)
 		while ((*a)->cheapest == false && (*b)->cheapest == false)
 			rrr(a, b);
-	else if (cheap->median == false && cheap->target_node->median == false)
+	else if (cheap->above_median == false && cheap->target->above_median == false)
 		while ((*a)->cheapest == false && (*b)->cheapest == false)
 			rr(a, b);
-	end_rotation(a, 'a', cheap->target_node);
+	set_current_pos(*a);
+	set_current_pos(*b);
+	end_rotation(a, 'a', cheap->target);
 	end_rotation(b, 'b', cheap);
 	pa(a, b);
 }
@@ -62,11 +64,11 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 		set_node_values(*a, *b);
 		move_nodes(a, b);
 	}
-	set_current_pos(a);
-	smallest = get_smallest(a);
+	set_current_pos(*a);
+	smallest = get_smallest(*a);
 	while (*a != smallest)
 	{
-		if (smallest->median = true)
+		if (smallest->above_median == true)
 			ra(a);
 		else
 			rra(a);

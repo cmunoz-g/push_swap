@@ -4,6 +4,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <stdlib.h>
+# include <limits.h>
 
 typedef struct	s_push_swap
 {
@@ -19,11 +21,11 @@ typedef struct	s_push_swap
 
 t_push_swap	*find_last_node(t_push_swap *stack);
 t_push_swap	*get_smallest(t_push_swap *stack);
+t_push_swap	*get_cheapest(t_push_swap *stack);
 
 void	push_swap(t_push_swap **a, t_push_swap **b);
 void	move_nodes(t_push_swap **a, t_push_swap **b);
 void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target);
-void	get_cheapest(t_push_swap *stack);
 void	sort_small(t_push_swap **stack);
 void	push(t_push_swap **source_stack, t_push_swap **dest_stack);
 void	pa(t_push_swap **a, t_push_swap **b);
@@ -41,7 +43,7 @@ void	sa(t_push_swap **a);
 void	sb(t_push_swap **b);
 void	ss(t_push_swap **a, t_push_swap **b);
 void	check_args(t_push_swap *a, char	**table, bool flag);
-void	error(t_push_swap *stack, char **table, bool flag);
+void	error(t_push_swap **stack, char **table, bool flag);
 void	free_table(char	**table);
 void	free_stack(t_push_swap **stack);
 void	strfill(char **tab, char const *s, char c);
@@ -50,7 +52,6 @@ void	stack_init(t_push_swap **stack, char **argv, bool flag);
 void	set_current_pos(t_push_swap *stack);
 void	set_target(t_push_swap *a, t_push_swap *b);
 void	set_cost(t_push_swap *a, t_push_swap *b);
-void	set_cheapest(t_push_swap *b);
 void	set_node_values(t_push_swap *a, t_push_swap *b);
 
 char	**ft_split(char const *s, char c);
@@ -58,7 +59,7 @@ char	**ft_split(char const *s, char c);
 int		main(int argc, char *argv[]);
 int		check_repeat(t_push_swap *stack, int nbr);
 int		find_biggest(t_push_swap *stack);
-int		is_sorted(t_push_swap *stack);
+int		is_sorted(t_push_swap *stack, char **table, bool flag);
 int		strmem(char **tab, char const *s, char c, size_t words);
 
 size_t	auxstrmem(char const *s, char c, size_t *j);

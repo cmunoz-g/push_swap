@@ -67,6 +67,8 @@ void	stack_init(t_push_swap **stack, char **argv, bool flag)
 {
 	long	nbr;
 	
+	if (!flag)
+		argv++;
 	while (*argv)
 	{
 		nbr = ft_atol(*argv);
@@ -74,7 +76,7 @@ void	stack_init(t_push_swap **stack, char **argv, bool flag)
 			error(stack, argv, flag);
 		if (check_repeat(*stack, (int)nbr))
 			error(stack, argv, flag);
-		stack_add_back(stack, (int)nbr, flag, argv)
+		stack_add_back(stack, (int)nbr, flag, argv);
 		argv++;
 	}
 	if (flag)

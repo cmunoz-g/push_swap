@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void	rotate(t_push_swap **stack)
 {
 	t_push_swap *last;

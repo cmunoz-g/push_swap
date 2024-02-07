@@ -4,7 +4,7 @@ t_push_swap	*get_smallest(t_push_swap *stack)
 {
 	t_push_swap *res;
 
-	res = stack
+	res = stack;
 	while (stack)
 	{
 		if (stack->value < res->value)
@@ -44,17 +44,17 @@ void	set_target(t_push_swap *a, t_push_swap *b)
 	{
 		while (prospect)
 		{
-			if (!b->target_node && b->value < prospect->value)
-				b->target_node = prospect;
-			else if (b->target_node)
+			if (!b->target && b->value < prospect->value)
+				b->target = prospect;
+			else if (b->target)
 			{
-				if (b->target_value < prospect->value && prospect->value < b->target_node->value)
-					b->target_node = prospect;
+				if (b->target->value > prospect->value && prospect->value > b->value)
+					b->target = prospect;
 			}
 			prospect = prospect->next;
 		}
-		if (!b->target_node)
-			b->target_node = smallest;
+		if (!b->target)
+			b->target = smallest;
 		prospect = a;
 		b = b->next;
 	}
@@ -72,10 +72,10 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 		b->cost_to_move = b->position;
 		if (b->above_median == false)
 			b->cost_to_move = len_b - b->position;
-		if (b->target_node->above_median == true)
-			b->cost_to_move += b->target_node->position;
+		if (b->target->above_median == true)
+			b->cost_to_move += b->target->position;
 		else
-			b->cost_to_move += len_a - b->target_node->position;
+			b->cost_to_move += len_a - b->target->position;
 		b = b->next;
 	}
 }

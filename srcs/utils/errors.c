@@ -31,7 +31,7 @@ void	free_table(char	**table)
 	free (table);
 }
 
-void	error(t_push_swap *stack, char **table, bool flag)
+void	error(t_push_swap **stack, char **table, bool flag)
 {
 	free_stack(stack);
 	if (flag)
