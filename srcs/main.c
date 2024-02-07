@@ -26,16 +26,16 @@ int	main(int argc, char *argv[])
 		return (0);
 	flag = false;
 	check_args(a, argv, flag);
-	stack_init(a, argv, flag);
+	stack_init(&a, argv, flag);
 	len_a = stack_len(a);
 	if (!is_sorted(a))
 	{
 		if (len_a == 2)
-			sa(&a, false);
+			sa(&a);
 		else if (len_a == 3)
 			sort_small(&a);
 		else
-			push_swap(&a);
+			push_swap(&a, &b);
 	}
 	free_stack(&a);
 	return (0);
