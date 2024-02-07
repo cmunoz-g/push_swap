@@ -13,6 +13,8 @@ int	check_repeat(t_push_swap *stack, int nbr)
 
 int	check_args(char	*str) // hacer funcion que mire si el arg es correcto, un poco roll otoi
 
+int	is_sorted(t_push_swap *stack) //
+
 void	free_stack(t_push_swap **stack)
 {
 	t_push_swap	*node;

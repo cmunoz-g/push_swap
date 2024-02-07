@@ -18,7 +18,7 @@ void	push(t_push_swap **source_stack, t_push_swap **dest_stack)
 	}
 }
 
-void	pa(t_push_swap **b, t_push_swap **a)
+void	pa(t_push_swap **a, t_push_swap **b)
 {
 	push(b,a);
 	write(1, "pa\n", 3);
