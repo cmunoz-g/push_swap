@@ -80,7 +80,7 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 	}
 }
 
-void	set_cheapest(t_push_swap *b)
+void	set_cheapest(t_push_swap *b) // revisar esta logica
 {	
 	t_push_swap *current_cheapest;
 	

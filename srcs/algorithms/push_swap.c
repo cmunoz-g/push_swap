@@ -9,10 +9,12 @@ t_push_swap	*get_cheapest(t_push_swap *stack)
 
 void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
 {
+	size_t i = 0;
+
 	if (which_stack == 'a')
 	{
 		if (target->above_median == true) 
-			while (*stack != target) // se queda stuckeado en este while con el caso 1
+			while (*stack != target && i++ != 100 ) // se queda stuckeado en este while con el caso 1
 				ra(stack);
 		else 
 			while (*stack != target)
@@ -59,6 +61,15 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 		len_a--;
 	}
 	sort_small(a);
+
+	//testing
+	set_node_values(*a, *b);
+	while ((*b)->cheapest == false)
+		(*b) = (*b)->next;
+	printf("cheapest %d\n",(*b)->value);
+	printf("target %d\n",(*b)->target->value);
+	//testing. me sale en esta posicion con caso 1 que el 1 es el cheapest
+
 	while (*b)
 	{
 		set_node_values(*a, *b);
