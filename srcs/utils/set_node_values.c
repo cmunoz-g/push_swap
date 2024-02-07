@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_push_swap	*find_smallest(t_push_swap *stack)
+t_push_swap	*get_smallest(t_push_swap *stack)
 {
 	t_push_swap *res;
 
@@ -39,7 +39,7 @@ void	set_target(t_push_swap *a, t_push_swap *b)
 	t_push_swap *smallest;
 	
 	prospect = a;
-	smallest = find_smallest(a);
+	smallest = get_smallest(a);
 	while (b)
 	{
 		while (prospect)

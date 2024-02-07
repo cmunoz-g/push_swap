@@ -42,14 +42,14 @@ t_push_swap	*find_last_node(t_push_swap *stack)
 	return (stack);
 }
 
-void	stack_add_back(t_push_swap **stack, int nbr, bool flag)
+void	stack_add_back(t_push_swap **stack, int nbr, bool flag, char **argv)
 {
 	t_push_swap *new_node;
 	t_push_swap *last_node;
 
 	new_node = (t_push_swap *)malloc(sizeof(t_push_swap));
 	if (!new_node)
-		error(stack,) // ?? pensar como gestionar esto
+		error(stack, argv, flag);
 	new_node->value = nbr;
 	new_node->prev = NULL;
 	new_node->next = NULL;
@@ -69,14 +69,12 @@ void	stack_init(t_push_swap **stack, char **argv, bool flag)
 	
 	while (*argv)
 	{
-		if (check_args(*argv))
-			error(stack, argv, flag);
 		nbr = ft_atol(*argv);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			error(stack, argv, flag);
 		if (check_repeat(*stack, (int)nbr))
 			error(stack, argv, flag);
-		stack_add_back(stack, (int)nbr, flag)
+		stack_add_back(stack, (int)nbr, flag, argv)
 		argv++;
 	}
 	if (flag)

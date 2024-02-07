@@ -1,20 +1,5 @@
 #include "push_swap.h"
 
-int	check_repeat(t_push_swap *stack, int nbr)
-{
-	while (stack)
-	{
-		if (stack->value == nbr)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
-}
-
-int	check_args(char	*str) // hacer funcion que mire si el arg es correcto, un poco roll otoi
-
-int	is_sorted(t_push_swap *stack) //
-
 void	free_stack(t_push_swap **stack)
 {
 	t_push_swap	*node;
