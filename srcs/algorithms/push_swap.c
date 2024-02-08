@@ -26,7 +26,7 @@ void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
 	{
 		if (target->above_median == true) 
 			while (*stack != target && i++ != 100) // && i++ != 100 
-					ra(stack);
+				ra(stack);
 		else 
 			while (*stack != target)
 				rra(stack);
@@ -53,12 +53,11 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 	else if (cheap->above_median == false && cheap->target->above_median == false)
 		while ((*a) != cheap->target && (*b) != cheap)
 				rrr(a, b);
-	set_current_pos(*a);
+	set_current_pos(*a); // hace desaparecer numeros
 	set_current_pos(*b);
 	end_rotation(a, 'a', cheap->target);
 	end_rotation(b, 'b', cheap);
 	pa(a, b);
-	
 }
 
 void	push_swap(t_push_swap **a, t_push_swap **b)
@@ -81,6 +80,8 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 	// printf("cheapest %d\n",(*b)->value);
 	// printf("target %d\n",(*b)->target->value);
 	// //testing
+
+	
 
 	while (*b)
 	{
