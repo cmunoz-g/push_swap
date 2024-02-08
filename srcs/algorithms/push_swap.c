@@ -29,7 +29,11 @@ void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
 				ra(stack);
 		else 
 			while (*stack != target)
-				rra(stack);
+				{
+					printthewholefuckingthing(*stack);
+					rra(stack);
+					printthewholefuckingthing(*stack);
+				}
 	}
 	else
 	{
@@ -80,8 +84,6 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 	// printf("cheapest %d\n",(*b)->value);
 	// printf("target %d\n",(*b)->target->value);
 	// //testing
-
-	
 
 	while (*b)
 	{
