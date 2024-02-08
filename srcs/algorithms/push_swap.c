@@ -7,7 +7,18 @@ t_push_swap	*get_cheapest(t_push_swap *stack)
 	return (stack);
 }
 
-void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
+void	printthewholefuckingthing(t_push_swap *stack)
+{
+	while (stack)
+	{
+		printf("\n");
+		printf("value: %d, position: %d", stack->value, stack->position);
+		printf("\n");
+		stack = stack->next;
+	}
+}
+
+void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target) 
 {
 	size_t i = 0;
 
@@ -15,7 +26,7 @@ void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
 	{
 		if (target->above_median == true) 
 			while (*stack != target && i++ != 100) // && i++ != 100 
-				ra(stack);
+					ra(stack);
 		else 
 			while (*stack != target)
 				rra(stack);
@@ -47,6 +58,7 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 	end_rotation(a, 'a', cheap->target);
 	end_rotation(b, 'b', cheap);
 	pa(a, b);
+	
 }
 
 void	push_swap(t_push_swap **a, t_push_swap **b)
@@ -61,7 +73,7 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 		len_a--;
 	}
 	sort_small(a);
-
+	
 	// //testing
 	// set_node_values(*a, *b);
 	// while ((*b)->cheapest == false)
