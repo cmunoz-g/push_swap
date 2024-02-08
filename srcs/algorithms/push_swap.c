@@ -44,6 +44,7 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 			rr(a, b);
 	set_current_pos(*a);
 	set_current_pos(*b);
+	// printear el value y position de los que estoy mandando a end rot
 	end_rotation(a, 'a', cheap->target);
 	end_rotation(b, 'b', cheap);
 	pa(a, b);
@@ -68,7 +69,7 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 		(*b) = (*b)->next;
 	printf("cheapest %d\n",(*b)->value);
 	printf("target %d\n",(*b)->target->value);
-	//testing. me sale en esta posicion con caso 1 que el 1 es el cheapest
+	//testing
 
 	while (*b)
 	{
