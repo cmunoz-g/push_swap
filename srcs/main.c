@@ -8,6 +8,9 @@
 // ideas: puedo utilizar sa, ss, sb de alguna forma? quiza anadiendo mas condiciones, comprobar una vez funcione la ft. por ejemplo si el target esta en la 2 pos?
 // revisar comentarios del video e investigar para ver si se pude optimizar mas aun;
 
+// errores
+// ./push_swap 3 2 1 340 234 99 1000 10003 200 5
+
 int	main(int argc, char *argv[])
 {
 	t_push_swap	*a;

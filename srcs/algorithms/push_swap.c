@@ -37,14 +37,13 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 
 	cheap = get_cheapest(*b);
 	if (cheap->above_median == true && cheap->target->above_median == true)
-		while ((*a)->cheapest == false && (*b)->cheapest == false)
-			rrr(a, b);
+		while ((*a) != cheap->target && (*b) != cheap)
+				rr(a, b);
 	else if (cheap->above_median == false && cheap->target->above_median == false)
-		while ((*a)->cheapest == false && (*b)->cheapest == false)
-			rr(a, b);
+		while ((*a) != cheap->target && (*b) != cheap)
+				rrr(a, b);
 	set_current_pos(*a);
 	set_current_pos(*b);
-	// printear el value y position de los que estoy mandando a end rot
 	end_rotation(a, 'a', cheap->target);
 	end_rotation(b, 'b', cheap);
 	pa(a, b);
@@ -63,13 +62,13 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 	}
 	sort_small(a);
 
-	//testing
-	set_node_values(*a, *b);
-	while ((*b)->cheapest == false)
-		(*b) = (*b)->next;
-	printf("cheapest %d\n",(*b)->value);
-	printf("target %d\n",(*b)->target->value);
-	//testing
+	// //testing
+	// set_node_values(*a, *b);
+	// while ((*b)->cheapest == false)
+	// 	(*b) = (*b)->next;
+	// printf("cheapest %d\n",(*b)->value);
+	// printf("target %d\n",(*b)->target->value);
+	// //testing
 
 	while (*b)
 	{
