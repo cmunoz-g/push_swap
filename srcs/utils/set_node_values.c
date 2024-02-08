@@ -69,6 +69,7 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 	len_b = stack_len(b);
 	while (b)
 	{
+		
 		b->cost_to_move = b->position;
 		if (b->above_median == false)
 			b->cost_to_move = len_b - b->position;
@@ -80,7 +81,7 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 	}
 }
 
-void	set_cheapest(t_push_swap *b) // revisar esta logica
+void	set_cheapest(t_push_swap *b) 
 {	
 	t_push_swap *current_cheapest;
 	
@@ -89,7 +90,7 @@ void	set_cheapest(t_push_swap *b) // revisar esta logica
 	b = b->next;
 	while (b)
 	{
-		if (current_cheapest->cost_to_move < b->cost_to_move)
+		if (current_cheapest->cost_to_move > b->cost_to_move)
 		{
 			current_cheapest->cheapest = false;
 			b->cheapest = true;

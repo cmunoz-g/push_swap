@@ -14,7 +14,7 @@ void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
 	if (which_stack == 'a')
 	{
 		if (target->above_median == true) 
-			while (*stack != target && i++ != 100 ) // se queda stuckeado en este while con el caso 1
+			while (*stack != target && i++ != 100) // && i++ != 100 
 				ra(stack);
 		else 
 			while (*stack != target)
