@@ -30,21 +30,21 @@ int	main(int argc, char *argv[])
 	flag = false;
 	check_args(a, argv, flag);
 	stack_init(&a, argv, flag);
-	while (a) // revisar bien si el prev se guarda correctamente, cuando llamo rra en el push_swap parece
-	// que el prev esta mal guardado??????????/
-	{
-		printf("valor:%d	",a->value);
-		if (a->prev)
-			printf("valor del prev:%d	",a->prev->value);
-		else
-			printf("no prev	");
-		if (a->next)
-			printf("valor del next:%d	",a->next->value);
-		else
-			printf("no NEXT	");
-		printf("\n");
-		a = a->next;
-	}
+	// while (a) // revisar bien si el prev se guarda correctamente, cuando llamo rra en el push_swap parece
+	// // que el prev esta mal guardado??????????/
+	// {
+	// 	printf("valor:%d	",a->value);
+	// 	if (a->prev)
+	// 		printf("valor del prev:%d	",a->prev->value);
+	// 	else
+	// 		printf("no prev	");
+	// 	if (a->next)
+	// 		printf("valor del next:%d	",a->next->value);
+	// 	else
+	// 		printf("no NEXT	");
+	// 	printf("\n");
+	// 	a = a->next;
+	// }
 	exit(0);
 	len_a = stack_len(a);
 	if (is_sorted(a, argv, flag))

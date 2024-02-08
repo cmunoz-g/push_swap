@@ -5,6 +5,22 @@ void	reverse_rotate(t_push_swap **stack)
 	t_push_swap *last_node;
 	t_push_swap *new_last;
 
+	while (*stack) // me he quedado aqui lo ultimisimo que hice en 42, mirar bien si funciona o no, sobre todo lo de los prevs
+	{
+		printf("valor:%d	",(*stack)->value);
+		if ((*stack)->prev)
+			printf("valor del prev:%d	",(*stack)->prev->value);
+		else
+			printf("no prev	");
+		if ((*stack)->next)
+			printf("valor del next:%d	",(*stack)->next->value);
+		else
+			printf("no NEXT	");
+		printf("\n");
+		(*stack)= (*stack)->next;
+	}
+	exit(0);
+
 	if (stack && *stack)
 	{
 		last_node = find_last_node(*stack);
