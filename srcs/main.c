@@ -56,12 +56,12 @@ int	main(int argc, char *argv[])
 		else
 			push_swap(&a, &b);
 	}
-	// printf("\n");
-	// while (a)
-	// {
-	// 	printf("%d\n",a->value);
-	// 	a = a->next;
-	// }
+	printf("\n");
+	while (a)
+	{
+		printf("%d\n",a->value);
+		a = a->next;
+	}
 	free_stack(&a);
 	return (0);
 }

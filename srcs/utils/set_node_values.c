@@ -113,8 +113,6 @@ void	set_cheapest(t_push_swap *b) // revisar esta logica
 	}
 }
 
-
-
 void	set_node_values(t_push_swap *a, t_push_swap *b)
 {
 	set_current_pos(a);
