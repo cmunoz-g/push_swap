@@ -47,7 +47,7 @@ int	main(int argc, char *argv[])
 	// }
 	// exit(0);
 	len_a = stack_len(a);
-	if (is_sorted(a, argv, flag))
+	if (is_sorted(a, argv, flag) == 1)
 	{
 		if (len_a == 2)
 			sa(&a);

@@ -39,20 +39,15 @@ void	check_args(t_push_swap *a, char	**table, bool flag)
 
 int	is_sorted(t_push_swap *stack, char **table, bool flag)
 {
-	int	value;
-	
-	if (stack)
+	if (!stack)
+		error(&stack, table, flag);
+	while (stack->next)
 	{
-		value = stack->value;
+		if (stack->value > stack->next->value)
+			return (1);
 		stack = stack->next;
-		while (stack)
-		{
-			if (value > stack->value)
-				return (1);
-			stack = stack->next;
-		}
-		return (0);
 	}
-	error(&stack, table, flag); // merece la pena otra ft de error y quitar el table y flag de esto? en teoria aqui ya he liberado la memoria de la tabla
-	return (1);
+	return (0);
 }
+
+// merece la pena otra ft de error y quitar el table y flag de esto? en teoria aqui ya he liberado la memoria de la tabla. en la de arriba

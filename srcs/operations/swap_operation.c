@@ -12,7 +12,8 @@ void	swap(t_push_swap **stack)
 		second->prev = NULL;
 		first->prev = second;
 		first->next = second->next;
-		second->next->prev = first;
+		if (second->next)
+			second->next->prev = first;
 		second->next = first;
 		*stack = second;
 	}
