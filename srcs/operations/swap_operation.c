@@ -9,11 +9,12 @@ void	swap(t_push_swap **stack)
 	second = (*stack)->next;
 	if (*stack && (*stack)->next)
 	{
-		first->next = second->next;
-		first->prev = second;
-		second->next = first;
 		second->prev = NULL;
-		(*stack) = second;
+		first->prev = second;
+		first->next = second->next;
+		second->next->prev = first;
+		second->next = first;
+		*stack = second;
 	}
 }
 

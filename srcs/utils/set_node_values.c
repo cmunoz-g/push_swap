@@ -33,6 +33,15 @@ void	set_current_pos(t_push_swap *stack)
 	}
 }
 
+void	reset_targets(t_push_swap *b)
+{
+	while (b)
+	{
+		b->target = NULL;
+		b = b->next;
+	}
+}
+
 void	set_target(t_push_swap *a, t_push_swap *b)
 {
 	t_push_swap *prospect;
@@ -40,6 +49,7 @@ void	set_target(t_push_swap *a, t_push_swap *b)
 	
 	prospect = a;
 	smallest = get_smallest(a);
+	reset_targets(b);
 	while (b)
 	{
 		while (prospect)
@@ -69,7 +79,6 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 	len_b = stack_len(b);
 	while (b)
 	{
-		
 		b->cost_to_move = b->position;
 		if (b->above_median == false)
 			b->cost_to_move = len_b - b->position;
@@ -81,10 +90,12 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 	}
 }
 
-void	set_cheapest(t_push_swap *b) 
+void	set_cheapest(t_push_swap *b) // revisar esta logica
 {	
 	t_push_swap *current_cheapest;
 	
+	if (b == NULL)
+		return ;
 	current_cheapest = b;
 	current_cheapest->cheapest = true;
 	b = b->next;
@@ -101,6 +112,8 @@ void	set_cheapest(t_push_swap *b)
 		b = b->next;
 	}
 }
+
+
 
 void	set_node_values(t_push_swap *a, t_push_swap *b)
 {

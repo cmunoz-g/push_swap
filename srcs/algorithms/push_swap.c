@@ -7,16 +7,17 @@ t_push_swap	*get_cheapest(t_push_swap *stack)
 	return (stack);
 }
 
-void	printthewholefuckingthing(t_push_swap *stack)
-{
-	while (stack)
-	{
-		printf("\n");
-		printf("value: %d, position: %d", stack->value, stack->position);
-		printf("\n");
-		stack = stack->next;
-	}
-}
+// void	printthewholefuckingthing(t_push_swap *stack)
+// {
+// 	printf("STACK A:\n");
+// 	while (stack)
+// 	{
+// 		printf("\n");
+// 		printf("value: %d position: %d", stack->value, stack->position);
+// 		printf("\n");
+// 		stack = stack->next;
+// 	}
+// }
 
 void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target) 
 {
@@ -29,11 +30,8 @@ void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target)
 				ra(stack);
 		else 
 			while (*stack != target)
-				{
-					printthewholefuckingthing(*stack);
-					rra(stack);
-					printthewholefuckingthing(*stack);
-				}
+				rra(stack);
+
 	}
 	else
 	{
@@ -51,13 +49,16 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 	t_push_swap *cheap;
 
 	cheap = get_cheapest(*b);
+	// printf("cheapest:%d\n",cheap->value);
+	// printf("target:%d\n",cheap->target->value);
 	if (cheap->above_median == true && cheap->target->above_median == true)
 		while ((*a) != cheap->target && (*b) != cheap)
-				rr(a, b);
+			rr(a, b);
+				
 	else if (cheap->above_median == false && cheap->target->above_median == false)
 		while ((*a) != cheap->target && (*b) != cheap)
-				rrr(a, b);
-	set_current_pos(*a); // hace desaparecer numeros
+			rrr(a, b);
+	set_current_pos(*a);
 	set_current_pos(*b);
 	end_rotation(a, 'a', cheap->target);
 	end_rotation(b, 'b', cheap);
@@ -75,15 +76,30 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 		pb(a, b);
 		len_a--;
 	}
+	// while (*a) 
+	// {
+	// 	printf("valor:%d   ",(*a)->value);
+	// 	if ((*a)->prev)
+	// 		printf("   valor del prev:%d   ",(*a)->prev->value);
+	// 	else
+	// 		printf("   no prev             ");
+	// 	if ((*a)->next)
+	// 		printf("   valor del next:%d   ",(*a)->next->value);
+	// 	else
+	// 		printf("   no NEXT             ");
+	// 	printf("\n");
+	// 	(*a) = (*a)->next;
+	// }
+	// exit(0);
 	sort_small(a);
-	
-	// //testing
-	// set_node_values(*a, *b);
-	// while ((*b)->cheapest == false)
-	// 	(*b) = (*b)->next;
-	// printf("cheapest %d\n",(*b)->value);
-	// printf("target %d\n",(*b)->target->value);
-	// //testing
+
+		// //testing
+		// set_node_values(*a, *b);
+		// while ((*b)->cheapest == false)
+		// 	(*b) = (*b)->next;
+		// printf("cheapest %d\n",(*b)->value);
+		// printf("target %d\n",(*b)->target->value);
+		// //testing
 
 	while (*b)
 	{
