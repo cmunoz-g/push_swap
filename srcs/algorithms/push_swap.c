@@ -9,11 +9,21 @@ t_push_swap	*get_cheapest(t_push_swap *stack)
 
 // void	printthewholefuckingthing(t_push_swap *stack)
 // {
+// 	printf("\n");
+// 	printf("\n");
 // 	printf("STACK A:\n");
-// 	while (stack)
+// 	while (stack) 
 // 	{
+// 		printf("valor:%d   ",stack->value);
+// 		if (stack->prev)
+// 			printf("   valor del prev:%d   ",stack->prev->value);
+// 		else
+// 			printf("   no prev             ");
+// 		if (stack->next)
+// 			printf("   valor del next:%d   ",stack->next->value);
+// 		else
+// 			printf("   no NEXT             ");
 // 		printf("\n");
-// 		printf("value: %d position: %d", stack->value, stack->position);
 // 		printf("\n");
 // 		stack = stack->next;
 // 	}
@@ -21,12 +31,12 @@ t_push_swap	*get_cheapest(t_push_swap *stack)
 
 void	end_rotation(t_push_swap **stack, char which_stack, t_push_swap *target) 
 {
-	size_t i = 0;
+	//size_t i = 0;
 
 	if (which_stack == 'a')
 	{
 		if (target->above_median == true) 
-			while (*stack != target && i++ != 100) // && i++ != 100 
+			while (*stack != target) // && i++ != 100 
 				ra(stack);
 		else 
 			while (*stack != target)
@@ -49,8 +59,8 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 	t_push_swap *cheap;
 
 	cheap = get_cheapest(*b);
-	// printf("cheapest:%d\n",cheap->value);
-	// printf("target:%d\n",cheap->target->value);
+	printf("cheapest:%d\n",cheap->value);
+	printf("target:%d\n",cheap->target->value);
 	if (cheap->above_median == true && cheap->target->above_median == true)
 		while ((*a) != cheap->target && (*b) != cheap)
 			rr(a, b);
@@ -90,7 +100,7 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 	// 	printf("\n");
 	// 	(*a) = (*a)->next;
 	// }
-	// exit(0);
+	// //exit(0);
 	sort_small(a);
 
 		// //testing
@@ -105,6 +115,7 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 	{
 		set_node_values(*a, *b);
 		move_nodes(a, b);
+		//printthewholefuckingthing(*a);
 	}
 	set_current_pos(*a);
 	smallest = get_smallest(*a);
