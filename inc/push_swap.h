@@ -59,7 +59,7 @@ char	**ft_split(char const *s, char c);
 int		main(int argc, char *argv[]);
 int		check_repeat(t_push_swap *stack, int nbr);
 int		find_biggest(t_push_swap *stack);
-int		is_sorted(t_push_swap *stack);
+int		is_sorted(t_push_swap *stack, char **table, bool flag);
 int		strmem(char **tab, char const *s, char c, size_t words);
 
 size_t	auxstrmem(char const *s, char c, size_t *j);

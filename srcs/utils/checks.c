@@ -37,10 +37,10 @@ void	check_args(t_push_swap *a, char	**table, bool flag)
 	}
 }
 
-int	is_sorted(t_push_swap *stack)
+int	is_sorted(t_push_swap *stack, char **table, bool flag)
 {
-	if (!stack) // que sea error esto?? comprobar si en algun caso el stack puede llegar nulo aqui
-		return (1);
+	if (!stack) 
+		error(&a, table, flag);
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)

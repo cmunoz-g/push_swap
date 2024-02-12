@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 	check_args(a, argv, flag);
 	stack_init(&a, argv, flag);
 	len_a = stack_len(a);
-	if (is_sorted(a) == 1 && len_a)
+	if (is_sorted(a, argv, flag) == 1 && len_a)
 	{
 		if (len_a == 2)
 			sa(&a);
