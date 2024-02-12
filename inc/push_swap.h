@@ -66,6 +66,6 @@ size_t	auxstrmem(char const *s, char c, size_t *j);
 size_t	countwords(char const *s, char c);
 size_t	stack_len(t_push_swap *stack);
 
-long	ft_atol(char *str);
+long	ft_atol(char *str, char **argv, bool flag, t_push_swap **stack);
 
 #endif

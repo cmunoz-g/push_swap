@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-long	ft_atol(char *str)
+long	ft_atol(char *str, char **argv, bool flag, t_push_swap **stack)
 {
 	long	res;
 	int		neg;
@@ -12,6 +12,8 @@ long	ft_atol(char *str)
 		neg = -1;
 		str++;
 	}
+	if (!(*str))
+		error(stack, argv, flag);
 	while (*str)
 	{
 		res = (res * 10) + (*str - '0');
@@ -73,7 +75,7 @@ void	stack_init(t_push_swap **stack, char **argv, bool flag)
 		i++;
 	while (argv[i])
 	{
-		nbr = ft_atol(argv[i]);
+		nbr = ft_atol(argv[i], argv, flag, stack);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			error(stack, argv, flag);
 		if (check_repeat(*stack, (int)nbr))
