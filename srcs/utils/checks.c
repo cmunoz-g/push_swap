@@ -40,7 +40,7 @@ void	check_args(t_push_swap *a, char	**table, bool flag)
 int	is_sorted(t_push_swap *stack, char **table, bool flag)
 {
 	if (!stack) 
-		error(&a, table, flag);
+		error(&stack, table, flag);
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
