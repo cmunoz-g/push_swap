@@ -28,7 +28,7 @@ void	free_table(char	**table)
 		free(table[i]);
 		i++;
 	}
-	free (table);
+	free(table);
 }
 
 void	error(t_push_swap **stack, char **table, bool flag)

@@ -37,10 +37,10 @@ void	check_args(t_push_swap *a, char	**table, bool flag)
 	}
 }
 
-int	is_sorted(t_push_swap *stack, char **table, bool flag)
+int	is_sorted(t_push_swap *stack)
 {
-	if (!stack)
-		error(&stack, table, flag);
+	if (!stack) // que sea error esto?? comprobar si en algun caso el stack puede llegar nulo aqui
+		return (1);
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
@@ -49,5 +49,3 @@ int	is_sorted(t_push_swap *stack, char **table, bool flag)
 	}
 	return (0);
 }
-
-// merece la pena otra ft de error y quitar el table y flag de esto? en teoria aqui ya he liberado la memoria de la tabla. en la de arriba

@@ -10,6 +10,9 @@
 
 // queda esto: pasar tests y demas, arreglar el parseo de si lo paso en un solo str todo, comprobar formas de hacerlo algo mas eficiente, quitar la mierda, organizar los archivos para que quede todo limpio 
 // y menos de 5 ft por archivo, pensar en casos edge, bonus. ir pasando tests en cada punto comprobar que no me lo estoy cargando
+ // ademas de comprobar el parseo en una str, mirar que el atol no convierta a numbero cosas como 123nbwer
+ // para mas eficiencia dos cosas, meter una condicion de ss si ambos estan en la 2a posicion, justo antes de llamar a end rotation
+ // como poder factorizar en el cost que ambos esten en el mismo lado de la media y que por lo tanto el coste sea menor
 
 int	main(int argc, char *argv[])
 {
@@ -20,34 +23,18 @@ int	main(int argc, char *argv[])
 
 	a = NULL;
 	b = NULL;
+	flag = false;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
 		flag = true;
 	}
-	else if (argc == 1) // not sure si necesito esto
+	else if (argc == 1) 
 		return (0);
-	flag = false;
 	check_args(a, argv, flag);
 	stack_init(&a, argv, flag);
-	// // revisar bien si el prev se guarda correctamente, cuando llamo rra en el push_swap parece que el prev esta mal guardado?????????
-	// while (a) 
-	// {
-	// 	printf("valor:%d   ",a->value);
-	// 	if (a->prev)
-	// 		printf("   valor del prev:%d   ",a->prev->value);
-	// 	else
-	// 		printf("   no prev             ");
-	// 	if (a->next)
-	// 		printf("   valor del next:%d   ",a->next->value);
-	// 	else
-	// 		printf("   no NEXT             ");
-	// 	printf("\n");
-	// 	a = a->next;
-	// }
-	// exit(0);
 	len_a = stack_len(a);
-	if (is_sorted(a, argv, flag) == 1)
+	if (is_sorted(a) == 1 && len_a)
 	{
 		if (len_a == 2)
 			sa(&a);

@@ -66,18 +66,20 @@ void	stack_add_back(t_push_swap **stack, int nbr, bool flag, char **argv)
 void	stack_init(t_push_swap **stack, char **argv, bool flag)
 {
 	long	nbr;
+	size_t	i;
 	
+	i = 0;
 	if (!flag)
-		argv++;
-	while (*argv)
+		i++;
+	while (argv[i])
 	{
-		nbr = ft_atol(*argv);
+		nbr = ft_atol(argv[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			error(stack, argv, flag);
 		if (check_repeat(*stack, (int)nbr))
 			error(stack, argv, flag);
 		stack_add_back(stack, (int)nbr, flag, argv);
-		argv++;
+		i++;
 	}
 	if (flag)
 		free_table(argv);
