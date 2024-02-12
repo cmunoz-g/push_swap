@@ -59,8 +59,8 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 	t_push_swap *cheap;
 
 	cheap = get_cheapest(*b);
-	printf("cheapest:%d\n",cheap->value);
-	printf("target:%d\n",cheap->target->value);
+	//printf("cheapest:%d\n",cheap->value);
+//	printf("target:%d\n",cheap->target->value);
 	if (cheap->above_median == true && cheap->target->above_median == true)
 		while ((*a) != cheap->target && (*b) != cheap)
 			rr(a, b);
