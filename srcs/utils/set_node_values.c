@@ -79,36 +79,36 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 	len_b = stack_len(b);
 	while (b)
 	{
-		if (b->above_median && b->target->above_median)
+		b->cost_to_move = b->position;
+		if (b->above_median == false)
+			b->cost_to_move = len_b - b->position;
+		if (b->target->above_median == true)
 		{
-			if (b->position < b->target->position)
-				b->cost_to_move = len_b - b->position;
-			else 
-				b->cost_to_move = len_a - b->target->position;
-
+			b->cost_to_move += b->target->position;
+			if (b->above_median)
+			{
+				if (b->position <= b->target->position)
+					b->cost_to_move -= b->position;
+				else
+					b->cost_to_move -= b->target->position;
+			}
 		}
-		else if (!b->above_median && !b->target->above_median)
+		else
 		{
-			if (b->position < b->target->position)
-				b->cost_to_move = b->target->position;
-			else 
-				b->cost_to_move = b->position;
-		}
-		else 
-		{
-			b->cost_to_move = b->position;
-			if (b->above_median == false)
-				b->cost_to_move = len_b - b->position;
-			if (b->target->above_median == true)
-				b->cost_to_move += b->target->position;
-			else
-				b->cost_to_move += len_a - b->target->position;
+			b->cost_to_move += len_a - b->target->position;
+			if (!b->above_median)
+			{
+				if (b->position <= b->target->position)
+					b->cost_to_move -= (len_b - b->position);
+				else
+					b->cost_to_move -= (len_a - b->target->position);
+			}	
 		}
 		b = b->next;
 	}
 }
 
-void	set_cheapest(t_push_swap *b) // revisar esta logica
+void	set_cheapest(t_push_swap *b) 
 {	
 	t_push_swap *current_cheapest;
 	
