@@ -98,6 +98,7 @@ void	cost_aux(t_push_swap *b, size_t len_a, size_t len_b)
 			else
 				b->cost_to_move -= nums_below[1];
 		}
+		b = b->next;
 	}
 }
 
