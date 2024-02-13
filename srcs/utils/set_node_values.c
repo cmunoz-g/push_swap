@@ -85,7 +85,7 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 		if (b->target->above_median == true)
 		{
 			b->cost_to_move += b->target->position;
-			if (b->above_median)
+			if (b->above_median && b->position != 0)
 			{
 				if (b->position <= b->target->position)
 					b->cost_to_move -= b->position;
