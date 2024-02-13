@@ -70,6 +70,37 @@ void	set_target(t_push_swap *a, t_push_swap *b)
 	}
 }
 
+void	cost_aux(t_push_swap *b, size_t len_a, size_t len_b)
+{
+	size_t	nums_above[2];
+	size_t	nums_below[2];
+
+	while (b)
+	{
+		if (b->above_median && b->target->above_median)
+		{
+			nums_above[0] = b->target->position;
+			nums_above[1] = b->position;
+			if (nums_above[0] && nums_above[1])
+			{
+				if (nums_above[0] <= nums_above[1])
+					b->cost_to_move -= nums_above[0];
+				else
+					b->cost_to_move -= nums_above[1];
+			}
+		}
+		else if (!b->above_median && !b->target->above_median)
+		{
+			nums_below[0] = len_a - (b->target->position + 1);
+			nums_below[1] = len_b - (b->position + 1);
+			if (nums_below[0] >= nums_above[1])
+				b->cost_to_move -= nums_below[0];
+			else
+				b->cost_to_move -= nums_below[1];
+		}
+	}
+}
+
 void	set_cost(t_push_swap *a, t_push_swap *b)
 {
 	size_t	len_a;
@@ -83,29 +114,12 @@ void	set_cost(t_push_swap *a, t_push_swap *b)
 		if (b->above_median == false)
 			b->cost_to_move = len_b - b->position;
 		if (b->target->above_median == true)
-		{
 			b->cost_to_move += b->target->position;
-			if (b->above_median && b->position != 0 && b->target->position != 0)
-			{
-				if (b->position <= b->target->position)
-					b->cost_to_move -= b->position;
-				else
-					b->cost_to_move -= b->target->position;
-			}
-		}
 		else
-		{
 			b->cost_to_move += len_a - b->target->position;
-			if (!b->above_median && b->position != ((int)len_b - 1) && b->target->position != ((int)len_a - 1))
-			{
-				if (b->position <= b->target->position)
-					b->cost_to_move -= (len_b - b->position);
-				else
-					b->cost_to_move -= (len_a - b->target->position);
-			}	
-		}
 		b = b->next;
 	}
+	cost_aux(b, len_a, len_b);
 }
 
 void	set_cheapest(t_push_swap *b) 
