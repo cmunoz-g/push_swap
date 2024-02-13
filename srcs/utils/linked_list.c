@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-long	ft_atol(char *str, char **argv, bool flag, t_push_swap **stack)
+long	ft_atol(char *str, t_push_swap **stack)
 {
 	long	res;
 	int		neg;
@@ -13,7 +13,7 @@ long	ft_atol(char *str, char **argv, bool flag, t_push_swap **stack)
 		str++;
 	}
 	if (!(*str))
-		error(stack, argv, flag);
+		error(stack);
 	while (*str)
 	{
 		res = (res * 10) + (*str - '0');
@@ -44,14 +44,14 @@ t_push_swap	*find_last_node(t_push_swap *stack)
 	return (stack);
 }
 
-void	stack_add_back(t_push_swap **stack, int nbr, bool flag, char **argv)
+void	stack_add_back(t_push_swap **stack, int nbr)
 {
 	t_push_swap *new_node;
 	t_push_swap *last_node;
 
 	new_node = (t_push_swap *)malloc(sizeof(t_push_swap));
 	if (!new_node)
-		error(stack, argv, flag);
+		error(stack);
 	new_node->value = nbr;
 	new_node->prev = NULL;
 	new_node->next = NULL;
@@ -65,24 +65,20 @@ void	stack_add_back(t_push_swap **stack, int nbr, bool flag, char **argv)
 		*stack = new_node;
 }
 
-void	stack_init(t_push_swap **stack, char **argv, bool flag)
+void	stack_init(t_push_swap **stack, char **argv)
 {
 	long	nbr;
 	size_t	i;
 	
-	i = 0;
-	if (!flag)
-		i++;
+	i = 1;
 	while (argv[i])
 	{
-		nbr = ft_atol(argv[i], argv, flag, stack);
+		nbr = ft_atol(argv[i], stack);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			error(stack, argv, flag);
+			error(stack);
 		if (check_repeat(*stack, (int)nbr))
-			error(stack, argv, flag);
-		stack_add_back(stack, (int)nbr, flag, argv);
+			error(stack);
+		stack_add_back(stack, (int)nbr);
 		i++;
 	}
-	if (flag)
-		free_table(argv);
 }

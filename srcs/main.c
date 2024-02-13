@@ -19,22 +19,15 @@ int	main(int argc, char *argv[])
 	t_push_swap	*a;
 	t_push_swap *b;
 	size_t		len_a;
-	bool		flag;
 
 	a = NULL;
 	b = NULL;
-	flag = false;
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		flag = true;
-	}
-	else if (argc == 1) 
+	if (argc == 1) 
 		return (0);
-	check_args(a, argv, flag);
-	stack_init(&a, argv, flag);
+	check_args(a, argv);
+	stack_init(&a, argv);
 	len_a = stack_len(a);
-	if (is_sorted(a, argv, flag) == 1 && len_a)
+	if (is_sorted(a) == 1 && len_a)
 	{
 		if (len_a == 2)
 			sa(&a);

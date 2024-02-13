@@ -13,7 +13,6 @@ SRCS = main.c \
        operations/swap_operation.c \
        utils/checks.c \
        utils/errors.c \
-       utils/ft_split.c \
        utils/linked_list.c \
        utils/set_node_values.c
 

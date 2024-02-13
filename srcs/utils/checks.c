@@ -11,15 +11,12 @@ int	check_repeat(t_push_swap *stack, int nbr)
 	return (0);
 }
 
-void	check_args(t_push_swap *a, char	**table, bool flag)
+void	check_args(t_push_swap *a, char	**table)
 {
 	size_t	i;
 	size_t	j;
 
-	if (!flag)
-		i = 1;
-	else
-		i = 0;
+	i = 1;
 	j = 0;
 	while (table[i])
 	{
@@ -28,7 +25,7 @@ void	check_args(t_push_swap *a, char	**table, bool flag)
 		while (table[i][j] && (table[i][j] >= 48 && table[i][j] <= 57))
 			j++;
 		if (table[i][j])
-			error(&a, table, flag);
+			error(&a);
 		else
 		{
 			j = 0;
@@ -37,10 +34,10 @@ void	check_args(t_push_swap *a, char	**table, bool flag)
 	}
 }
 
-int	is_sorted(t_push_swap *stack, char **table, bool flag)
+int	is_sorted(t_push_swap *stack)
 {
 	if (!stack) 
-		error(&stack, table, flag);
+		error(&stack);
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)

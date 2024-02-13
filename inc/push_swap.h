@@ -42,13 +42,13 @@ void	swap(t_push_swap **stack);
 void	sa(t_push_swap **a);
 void	sb(t_push_swap **b);
 void	ss(t_push_swap **a, t_push_swap **b);
-void	check_args(t_push_swap *a, char	**table, bool flag);
-void	error(t_push_swap **stack, char **table, bool flag);
+void	check_args(t_push_swap *a, char	**table);
+void	error(t_push_swap **stack);
 void	free_table(char	**table);
 void	free_stack(t_push_swap **stack);
 void	strfill(char **tab, char const *s, char c);
-void	stack_add_back(t_push_swap **stack, int nbr, bool flag, char **argv);
-void	stack_init(t_push_swap **stack, char **argv, bool flag);
+void	stack_add_back(t_push_swap **stack, int nbr);
+void	stack_init(t_push_swap **stack, char **argv);
 void	set_current_pos(t_push_swap *stack);
 void	set_target(t_push_swap *a, t_push_swap *b);
 void	set_cost(t_push_swap *a, t_push_swap *b);
@@ -59,13 +59,13 @@ char	**ft_split(char const *s, char c);
 int		main(int argc, char *argv[]);
 int		check_repeat(t_push_swap *stack, int nbr);
 int		find_biggest(t_push_swap *stack);
-int		is_sorted(t_push_swap *stack, char **table, bool flag);
+int		is_sorted(t_push_swap *stack);
 int		strmem(char **tab, char const *s, char c, size_t words);
 
 size_t	auxstrmem(char const *s, char c, size_t *j);
 size_t	countwords(char const *s, char c);
 size_t	stack_len(t_push_swap *stack);
 
-long	ft_atol(char *str, char **argv, bool flag, t_push_swap **stack);
+long	ft_atol(char *str, t_push_swap **stack);
 
 #endif
