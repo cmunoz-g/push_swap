@@ -35,8 +35,6 @@ void	move_nodes(t_push_swap **a, t_push_swap **b)
 	t_push_swap *cheap;
 
 	cheap = get_cheapest(*b);
-	//printf("cheapest:%d\n",cheap->value);
-//	printf("target:%d\n",cheap->target->value);
 	if (cheap->above_median == true && cheap->target->above_median == true)
 		while ((*a) != cheap->target && (*b) != cheap)
 			rr(a, b);
@@ -61,36 +59,11 @@ void	push_swap(t_push_swap **a, t_push_swap **b)
 		pb(a, b);
 		len_a--;
 	}
-	// while (*a) 
-	// {
-	// 	printf("valor:%d   ",(*a)->value);
-	// 	if ((*a)->prev)
-	// 		printf("   valor del prev:%d   ",(*a)->prev->value);
-	// 	else
-	// 		printf("   no prev             ");
-	// 	if ((*a)->next)
-	// 		printf("   valor del next:%d   ",(*a)->next->value);
-	// 	else
-	// 		printf("   no NEXT             ");
-	// 	printf("\n");
-	// 	(*a) = (*a)->next;
-	// }
-	// //exit(0);
 	sort_small(a);
-
-		// //testing
-		// set_node_values(*a, *b);
-		// while ((*b)->cheapest == false)
-		// 	(*b) = (*b)->next;
-		// printf("cheapest %d\n",(*b)->value);
-		// printf("target %d\n",(*b)->target->value);
-		// //testing
-
 	while (*b)
 	{
 		set_node_values(*a, *b);
 		move_nodes(a, b);
-		//printthewholefuckingthing(*a);
 	}
 	set_current_pos(*a);
 	smallest = get_smallest(*a);
